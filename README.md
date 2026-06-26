@@ -1,36 +1,76 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Emma Estrada — Portfolio & Resume
 
-## Getting Started
+Personal portfolio site built with Next.js 16, React 19, TypeScript, and Tailwind CSS v4. Features full i18n (EN/ES) and ATS-optimized PDF resume download.
 
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
+cp .env.example .env.local   # fill in your contact info
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Environment Variables
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Copy `.env.example` to `.env.local` and fill in your values:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+| Variable | Description |
+|---|---|
+| `NEXT_PUBLIC_EMAIL` | Contact email (used in mailto links and PDF resume) |
+| `NEXT_PUBLIC_LINKEDIN` | LinkedIn profile URL |
+| `NEXT_PUBLIC_GITHUB` | GitHub profile URL |
 
-## Learn More
+All `NEXT_PUBLIC_*` vars are embedded in the client bundle (intentional — this is public contact info).
 
-To learn more about Next.js, take a look at the following resources:
+## Deploy to Vercel
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Push to GitHub:
+   ```bash
+   git init && git add . && git commit -m "Initial commit"
+   git remote add origin git@github.com:your-user/your-repo.git
+   git push -u origin main
+   ```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+2. Go to [vercel.com/new](https://vercel.com/new) → Import your GitHub repo
 
-## Deploy on Vercel
+3. Vercel auto-detects Next.js — no configuration needed
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+4. Add environment variables in the Vercel dashboard (Settings → Environment Variables):
+   - `NEXT_PUBLIC_EMAIL`
+   - `NEXT_PUBLIC_LINKEDIN`
+   - `NEXT_PUBLIC_GITHUB`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+5. Deploy — done
+
+### Static Export
+
+The project uses `output: 'export'` in `next.config.ts`, generating a fully static site. This works on Vercel's free tier with zero server-side code.
+
+## Development
+
+```bash
+npm run dev       # Start dev server
+npm run build     # Production build
+npm run start     # Serve production build
+npm run lint      # Run ESLint
+```
+
+## Project Structure
+
+```
+src/
+├── app/              # App Router (single page at /)
+├── components/       # Shared UI components
+├── lib/
+│   ├── i18n/         # Internationalization (EN/ES)
+│   └── resumeData.ts # PDF resume data builder
+└── actions/          # Server Actions (currently unused)
+```
+
+## Tech Stack
+
+- Next.js 16 (App Router)
+- React 19
+- TypeScript (strict mode)
+- Tailwind CSS v4
+- @react-pdf/renderer (PDF resume generation)
