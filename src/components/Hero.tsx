@@ -47,25 +47,6 @@ export default function Hero() {
           </a>
           <ResumeDownloadButton variant="hero" />
         </div>
-
-        <div className="absolute bottom-8 left-6 animate-fade-in [animation-delay:0.6s] opacity-0">
-          <div className="flex flex-col items-center gap-2 text-fg-secondary">
-            <span className="text-xs font-mono tracking-widest uppercase">Scroll</span>
-            <svg
-              className="w-4 h-4"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M19 14l-7 7m0 0l-7-7m7 7V3"
-              />
-            </svg>
-          </div>
-        </div>
       </div>
     </section>
   );
